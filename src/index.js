@@ -47,5 +47,7 @@ function Comment(props) {
   );
 }
 
-const element = <Comment user="John K" date={new Date().toDateString()} />;
+const element = (
+  <Comment author="John K" text="Holis" date={new Date().toDateString()} />
+);
 ReactDOM.render(element, document.getElementById("root"));
