@@ -28,8 +28,8 @@ function UserInfo(props) {
   return (
     <div>
       <div className="UserInfo">
-        <Avatar user="author" />
-        <div className="UserInfo-name">{props.user}</div>
+        <Avatar user={{ author: props.author, avatarUrl: props.avatarUrl }} />
+        <div className="UserInfo-name">{props.name}</div>
       </div>
     </div>
   );
@@ -38,7 +38,7 @@ function UserInfo(props) {
 function Comment(props) {
   return (
     <div>
-      <UserInfo user={props.author} />
+      <UserInfo author={props.author} avatarUrl={props.img} name={props.name} />
       <div className="Comment">
         <div className="Comment-text">{props.text}</div>
         <div className="Comment-date">{props.date}</div>
@@ -48,6 +48,12 @@ function Comment(props) {
 }
 
 const element = (
-  <Comment author="John K" text="Holis" date={new Date().toDateString()} />
+  <Comment
+    author="John K"
+    text="Holis"
+    date={new Date().toDateString()}
+    img=""
+    name="Liz"
+  />
 );
 ReactDOM.render(element, document.getElementById("root"));
