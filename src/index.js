@@ -1,12 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function formatName(dataUser) {
+  if (dataUser) {
+    return <h1>My name is {user.firstName + user.lastName}</h1>;
+  } else {
+    return <h1>Hello Stranger</h1>;
+  }
+}
+const user = {
+  firstName: "Liz",
+  lastName: "Victoria"
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const element = formatName(user);
+ReactDOM.render(element, document.getElementById("root"));
