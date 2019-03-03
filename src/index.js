@@ -2,20 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-const element = React.createElement(
-  "h1",
-  { className: "myClass" },
-  "Hello World"
+const element = (
+  <div>
+    <h1>Hello World</h1>
+    <h2>It is {new Date().toLocaleTimeString()}.</h2>
+  </div>
 );
-
-/*
-{
-  type: "h1",
-  props: {
-    className: "myClass",
-    children: "Liz"
-  }
-};
-*/
 
 ReactDOM.render(element, document.getElementById("root"));
