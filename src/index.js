@@ -1,27 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import styled from "styled-components";
 
-function Welcome(props) {
+const Button = styled.button`
+  background: tomato;
+`;
+
+const DivContainer = styled.div`
+  border: 1px solid tomato;
+`;
+
+function Avatar(props) {
+  console.log(props);
+  return <img src={props.avatar.url} alt={props.avatar.alt} width="150px" />;
+}
+
+function Container(props) {
   return (
-    <div>
-      <h1> My name is {props.name}</h1>
-      <h1>My last name is {props.last}</h1>
-    </div>
+    <DivContainer>
+      <Avatar
+        avatar={{
+          url:
+            "https://cdn0.iconfinder.com/data/icons/cute-girl/1200/d-512.png",
+          alt: "Avatar"
+        }}
+      />
+      <Button>Mi Boton 1</Button>
+      <h3>{props.name}</h3>
+    </DivContainer>
   );
 }
 
-function App(props) {
-  const splittedBySpace = props.user.split(" ");
-  const userName = "Miss " + splittedBySpace[0];
-  const userLast = splittedBySpace[1];
-
-  return (
-    <div>
-      <Welcome name={userName} last={userLast} />
-    </div>
-  );
-}
-
-const element = <App user="Liz Victoria" />;
+const element = <Container name="Liz" />;
 ReactDOM.render(element, document.getElementById("root"));
