@@ -64,42 +64,69 @@ const Descriptions = styled.p`
   margin: 0 100px 0 100px;
   font-size: 20px;
 `;
-function Avatar(props) {
-  return (
-    <Section>
-      <Imagen src={props.avatar.url} alt={props.avatar.alt} width="150px" />
+class Avatar extends React.Component {
+  render() {
+    return (
+      <Section>
+        <Imagen
+          src={this.props.avatar.url}
+          alt={this.props.avatar.alt}
+          width="150px"
+        />
 
-      <MyName />
-      <AboutMe />
-    </Section>
-  );
+        <MyName />
+        <AboutMe />
+      </Section>
+    );
+  }
 }
-function MyName() {
-  return (
-    <React.Fragment>
-      <Saludo>Hello!</Saludo>
-      <Name>I'm Liz</Name>
-    </React.Fragment>
-  );
-}
-
-function AboutMe(props) {
-  return (
-    <div>
-      <MyDescription href="#AcercaDeMi">About Me</MyDescription> <br />
-      <MyDescription href="#MoreAboutMe">More About Me</MyDescription> <br />
-      <MyDescription href="">I'm focused on..</MyDescription> <br />
-      <MyDescription href="">My Anthem</MyDescription> <br />
-      <MyDescription href="">You should watch...</MyDescription>
-    </div>
-  );
+class MyName extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Saludo>Hello!</Saludo>
+        <Name>I'm Liz</Name>
+      </React.Fragment>
+    );
+  }
 }
 
-function AcercaDeMi() {
-  return (
-    <Description>
+class AboutMe extends React.Component {
+  render() {
+    return (
       <div>
-        <H2About>About me</H2About>
+        <MyDescription href="#AcercaDeMi">About Me</MyDescription> <br />
+        <MyDescription href="#MoreAboutMe">More About Me</MyDescription> <br />
+        <MyDescription href="">I'm focused on..</MyDescription> <br />
+        <MyDescription href="">My Anthem</MyDescription> <br />
+        <MyDescription href="">You should watch...</MyDescription>
+      </div>
+    );
+  }
+}
+
+class AcercaDeMi extends React.Component {
+  render() {
+    return (
+      <Description>
+        <div>
+          <H2About>About me</H2About>
+          <Descriptions>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
+            placeat eaque possimus, impedit fugit excepturi corporis, deleniti
+            atque, dolor voluptatibus ullam vel quas eligendi quos debitis
+            temporibus ad repellendus. Est.
+          </Descriptions>
+        </div>
+      </Description>
+    );
+  }
+}
+class MoreAboutMe extends React.Component {
+  render() {
+    return (
+      <div>
+        <H2About> More about me</H2About>
         <Descriptions>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
           placeat eaque possimus, impedit fugit excepturi corporis, deleniti
@@ -107,38 +134,27 @@ function AcercaDeMi() {
           temporibus ad repellendus. Est.
         </Descriptions>
       </div>
-    </Description>
-  );
-}
-function MoreAboutMe() {
-  return (
-    <div>
-      <H2About> More about me</H2About>
-      <Descriptions>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
-        placeat eaque possimus, impedit fugit excepturi corporis, deleniti
-        atque, dolor voluptatibus ullam vel quas eligendi quos debitis
-        temporibus ad repellendus. Est.
-      </Descriptions>
-    </div>
-  );
+    );
+  }
 }
 
-function ContainerNav(props) {
-  return (
-    <div>
-      <DivContainer>
-        <Avatar
-          avatar={{
-            url:
-              "https://cdn0.iconfinder.com/data/icons/cute-girl/1200/d-512.png",
-            alt: "Avatar"
-          }}
-        />
-        <AcercaDeMi />
-      </DivContainer>
-    </div>
-  );
+class ContainerNav extends React.Component {
+  render() {
+    return (
+      <div>
+        <DivContainer>
+          <Avatar
+            avatar={{
+              url:
+                "https://cdn0.iconfinder.com/data/icons/cute-girl/1200/d-512.png",
+              alt: "Avatar"
+            }}
+          />
+          <AcercaDeMi />
+        </DivContainer>
+      </div>
+    );
+  }
 }
 
 const element = <ContainerNav name="Liz" />;
