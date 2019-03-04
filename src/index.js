@@ -2,58 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-/*function Welcome(props) {
-  return <h1>Mi name is {props.name}</h1>;
-}
-
-function App() {
+function Welcome(props) {
   return (
     <div>
-      <Welcome name="Gordis" />
-      <Welcome name="Liz" />
-    </div>
-  );
-}*/
-
-function Avatar(props) {
-  return (
-    <img
-      className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.author}
-    />
-  );
-}
-function UserInfo(props) {
-  return (
-    <div>
-      <div className="UserInfo">
-        <Avatar user={{ author: props.author, avatarUrl: props.avatarUrl }} />
-        <div className="UserInfo-name">{props.name}</div>
-      </div>
+      <h1> My name is {props.name}</h1>
+      <h1>My last name is {props.last}</h1>
     </div>
   );
 }
 
-function Comment(props) {
+function App(props) {
+  const splittedBySpace = props.user.split(" ");
+  const userName = "Miss " + splittedBySpace[0];
+  const userLast = splittedBySpace[1];
+
   return (
     <div>
-      <UserInfo author={props.author} avatarUrl={props.img} name={props.name} />
-      <div className="Comment">
-        <div className="Comment-text">{props.text}</div>
-        <div className="Comment-date">{props.date}</div>
-      </div>
+      <Welcome name={userName} last={userLast} />
     </div>
   );
 }
 
-const element = (
-  <Comment
-    author="John K"
-    text="Holis"
-    date={new Date().toDateString()}
-    img=""
-    name="Liz"
-  />
-);
+const element = <App user="Liz Victoria" />;
 ReactDOM.render(element, document.getElementById("root"));
