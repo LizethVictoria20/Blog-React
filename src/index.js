@@ -7,6 +7,7 @@ const Imagen = styled.img`
   display: block;
   width: 100px;
   border-radius: 50px;
+  margin-top: 60px;
 `;
 
 const DivContainer = styled.div`
@@ -14,28 +15,37 @@ const DivContainer = styled.div`
   grid-template-columns: 30% 70%;
   box-shadow: 4px 0 20px 0px #d8d8d8;
   min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 `;
 const Saludo = styled.p`
   font-size: 40px;
   margin-bottom: -20px;
+  margin-top: 0px;
+  color: white;
 `;
 const Name = styled.h2`
   font-size: 40px;
+  margin-top: -40px;
+  color: white;
+  height: 2px;
 `;
 
 const MyDescription = styled.a`
   line-height: 40px;
-  color: gray;
+  color: white;
   text-decoration: none;
   font-weight: 600;
 }
 `;
 const Section = styled.section`
   grid-column: 1 / 2;
-  height: 100vh
-  background: #ff9671;
-    justify-content: center;
+  height: 100vh;
+  display: inherit;
+  justify-content: center;
   align-items: center;
+  background: black;
+  box-shadow: 4px 0 20px 0px #d8d8d8;
 `;
 
 const SegundoContainer = styled.div`
@@ -51,13 +61,14 @@ const H2About = styled.h2`
 `;
 const Descriptions = styled.p`
   text-align: left;
+  margin: 0 100px 0 100px;
+  font-size: 20px;
 `;
 function Avatar(props) {
   return (
     <Section>
-      <div>
-        <Imagen src={props.avatar.url} alt={props.avatar.alt} width="150px" />
-      </div>
+      <Imagen src={props.avatar.url} alt={props.avatar.alt} width="150px" />
+
       <MyName />
       <AboutMe />
     </Section>
@@ -65,10 +76,10 @@ function Avatar(props) {
 }
 function MyName() {
   return (
-    <div>
+    <React.Fragment>
       <Saludo>Hello!</Saludo>
       <Name>I'm Liz</Name>
-    </div>
+    </React.Fragment>
   );
 }
 
