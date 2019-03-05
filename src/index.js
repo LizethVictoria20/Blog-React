@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import styled from "styled-components";
@@ -92,9 +92,37 @@ class MyName extends React.Component {
 }
 
 class AboutMe extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num: 0
+    };
+  }
   render() {
     return (
       <div>
+        <h1 style={{ color: "white" }}>{this.state.num}</h1>
+        <button
+          onClick={() => {
+            this.setState({ num: this.state.num + 1 });
+          }}
+        >
+          HOLIS
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ num: this.state.num - 1 });
+          }}
+        >
+          Resta
+        </button>
+        <button
+          onClick={() => {
+            this.setState({ num: 0 });
+          }}
+        >
+          Reset
+        </button>
         <MyDescription href="#AcercaDeMi">About Me</MyDescription> <br />
         <MyDescription href="#MoreAboutMe">More About Me</MyDescription> <br />
         <MyDescription href="">I'm focused on..</MyDescription> <br />
