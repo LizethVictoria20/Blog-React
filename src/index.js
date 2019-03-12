@@ -48,9 +48,6 @@ const Section = styled.section`
   box-shadow: 4px 0 20px 0px #d8d8d8;
 `;
 
-const SegundoContainer = styled.div`
-  width: 70%;
-`;
 const Description = styled.section`
   grid-column: 2 / 2;
   display: block;
@@ -64,7 +61,7 @@ const Descriptions = styled.p`
   margin: 0 100px 0 100px;
   font-size: 20px;
 `;
-class Avatar extends React.Component {
+class Presentation extends Component {
   render() {
     return (
       <Section>
@@ -73,14 +70,14 @@ class Avatar extends React.Component {
           alt={this.props.avatar.alt}
           width="150px"
         />
-
         <MyName />
-        <AboutMe />
+        <MenuAboutMe NavMenu={this.props.FunctionMenu} />
       </Section>
     );
   }
 }
-class MyName extends React.Component {
+
+class MyName extends Component {
   render() {
     return (
       <React.Fragment>
@@ -91,49 +88,64 @@ class MyName extends React.Component {
   }
 }
 
-class AboutMe extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      num: 0
-    };
-  }
+class MenuAboutMe extends Component {
   render() {
     return (
       <div>
-        <h1 style={{ color: "white" }}>{this.state.num}</h1>
-        <button
-          onClick={() => {
-            this.setState({ num: this.state.num + 1 });
+        <MyDescription
+          href=""
+          onClick={event => {
+            event.preventDefault();
+            this.props.NavMenu("about-me");
           }}
         >
-          HOLIS
-        </button>
-        <button
-          onClick={() => {
-            this.setState({ num: this.state.num - 1 });
+          About Me
+        </MyDescription>
+        <br />
+        <MyDescription
+          href=""
+          onClick={event => {
+            event.preventDefault();
+            this.props.NavMenu("more-about-me");
           }}
         >
-          Resta
-        </button>
-        <button
-          onClick={() => {
-            this.setState({ num: 0 });
+          More About Me
+        </MyDescription>
+        <br />
+        <MyDescription
+          href="#"
+          onClick={event => {
+            event.preventDefault();
+            this.props.NavMenu("focuses");
           }}
         >
-          Reset
-        </button>
-        <MyDescription href="#AcercaDeMi">About Me</MyDescription> <br />
-        <MyDescription href="#MoreAboutMe">More About Me</MyDescription> <br />
-        <MyDescription href="">I'm focused on..</MyDescription> <br />
-        <MyDescription href="">My Anthem</MyDescription> <br />
-        <MyDescription href="">You should watch...</MyDescription>
+          I'm focused on..
+        </MyDescription>
+        <br />
+        <MyDescription
+          href="#"
+          onClick={event => {
+            event.preventDefault();
+            this.props.NavMenu("anthem");
+          }}
+        >
+          My Anthem
+        </MyDescription>
+        <br />
+        <MyDescription
+          href="#"
+          onClick={event => {
+            this.props.NavMenu("you-should-watch");
+          }}
+        >
+          You should watch...
+        </MyDescription>
       </div>
     );
   }
 }
 
-class AcercaDeMi extends React.Component {
+class AboutMe extends Component {
   render() {
     return (
       <Description>
@@ -150,35 +162,91 @@ class AcercaDeMi extends React.Component {
     );
   }
 }
-class MoreAboutMe extends React.Component {
+
+class MoreAboutMe extends Component {
   render() {
     return (
-      <div>
+      <Description>
         <H2About> More about me</H2About>
-        <Descriptions>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas
-          placeat eaque possimus, impedit fugit excepturi corporis, deleniti
-          atque, dolor voluptatibus ullam vel quas eligendi quos debitis
-          temporibus ad repellendus. Est.
-        </Descriptions>
-      </div>
+        <Descriptions>Liz</Descriptions>
+      </Description>
     );
   }
 }
 
-class ContainerNav extends React.Component {
+class Focuses extends Component {
   render() {
+    return (
+      <Description>
+        <H2About>I'm focused on... </H2About>
+        <Descriptions>I'm focused on...</Descriptions>
+      </Description>
+    );
+  }
+}
+
+class MyAnthem extends Component {
+  render() {
+    return (
+      <Description>
+        <H2About>My Anthem</H2About>
+        <Descriptions>My anthem is...</Descriptions>
+      </Description>
+    );
+  }
+}
+
+class YouShouldWatch extends Component {
+  render() {
+    return (
+      <Description>
+        <H2About>You should Watch</H2About>
+        <Descriptions>You should watch...</Descriptions>
+      </Description>
+    );
+  }
+}
+
+class ContainerNav extends Component {
+  constructor(props) {
+    super(props);
+    this.changeState = this.changeState.bind(this);
+    this.state = {
+      activo: "about-me"
+    };
+  }
+  changeState(nuevoActivo) {
+    this.setState({
+      activo: nuevoActivo
+    });
+  }
+
+  render() {
+    let Content = null;
+    if (this.state.activo === "about-me") {
+      Content = <AboutMe />;
+    } else if (this.state.activo === "more-about-me") {
+      Content = <MoreAboutMe />;
+    } else if (this.state.activo === "focuses") {
+      Content = <Focuses />;
+    } else if (this.state.activo === "anthem") {
+      Content = <MyAnthem />;
+    } else {
+      Content = <YouShouldWatch />;
+    }
+
     return (
       <div>
         <DivContainer>
-          <Avatar
+          <Presentation
             avatar={{
               url:
                 "https://cdn0.iconfinder.com/data/icons/cute-girl/1200/d-512.png",
               alt: "Avatar"
             }}
+            FunctionMenu={this.changeState}
           />
-          <AcercaDeMi />
+          {Content}
         </DivContainer>
       </div>
     );
