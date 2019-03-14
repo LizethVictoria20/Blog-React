@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.enlaces {
+  font-size: 16px;
+  line-height: 0.4;
+}
+.enlaces:hover {
+  color: white;
+  text-decoration: none;
+}
+.container-fluid {
+  background-image: linear-gradient(
+    to right top,
+    #00c9a7,
+    #45d3c9,
+    #79dce2,
+    #a9e4f1,
+    #d3ecf7
+  );
+}

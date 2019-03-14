@@ -11,8 +11,6 @@ const Imagen = styled.img`
 `;
 
 const DivContainer = styled.div`
-  display: grid;
-  grid-template-columns: 30% 70%;
   box-shadow: 4px 0 20px 0px #d8d8d8;
   min-height: 100vh;
   justify-content: center;
@@ -33,7 +31,7 @@ const Name = styled.h2`
 
 const MyDescription = styled.a`
   line-height: 40px;
-  color: white;
+  color: black;
   text-decoration: none;
   font-weight: 600;
 }
@@ -42,9 +40,6 @@ const Section = styled.section`
   grid-column: 1 / 2;
   height: 100vh;
   display: inherit;
-  justify-content: center;
-  align-items: center;
-  background: black;
   box-shadow: 4px 0 20px 0px #d8d8d8;
 `;
 
@@ -64,26 +59,34 @@ const Descriptions = styled.p`
 class Presentation extends Component {
   render() {
     return (
-      <Section>
-        <Imagen
-          src={this.props.avatar.url}
-          alt={this.props.avatar.alt}
-          width="150px"
-        />
-        <MyName />
-        <MenuAboutMe NavMenu={this.props.FunctionMenu} />
+      <Section className="container-fluid navbar navbar-expand-lg navbar-dark  navbar-toggler d-inline-block justify-content-center flex-column  col-12 col-sm d-sm-flex justify-content-center align-items-center flex-column iam-sid">
+        <div>
+          <figure>
+            <Imagen
+              className="mb-2 d-none d-sm-block"
+              src={this.props.avatar.url}
+              alt={this.props.avatar.alt}
+              width="150px"
+            />
+            <figcaption>
+              <p className="h2">Hello!</p>
+              <h1 className="h2 font-weight-bolder mb-1">I'm Liz</h1>
+            </figcaption>
+          </figure>
+          <button
+            type="button"
+            className="navbar-toggler collapsed"
+            data-toggle="collapse"
+            data-target=".main-navbar"
+            aria-controls="main-navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <MenuAboutMe NavMenu={this.props.FunctionMenu} />
+        </div>
       </Section>
-    );
-  }
-}
-
-class MyName extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Saludo>Hello!</Saludo>
-        <Name>I'm Liz</Name>
-      </React.Fragment>
     );
   }
 }
@@ -91,56 +94,66 @@ class MyName extends Component {
 class MenuAboutMe extends Component {
   render() {
     return (
-      <div>
-        <MyDescription
-          href=""
-          onClick={event => {
-            event.preventDefault();
-            this.props.NavMenu("about-me");
-          }}
+      <nav>
+        <div
+          className="nav navbar-collapse flex-column main-navbar align-items-start collapse "
+          role="tablist"
         >
-          About Me
-        </MyDescription>
-        <br />
-        <MyDescription
-          href=""
-          onClick={event => {
-            event.preventDefault();
-            this.props.NavMenu("more-about-me");
-          }}
-        >
-          More About Me
-        </MyDescription>
-        <br />
-        <MyDescription
-          href="#"
-          onClick={event => {
-            event.preventDefault();
-            this.props.NavMenu("focuses");
-          }}
-        >
-          I'm focused on..
-        </MyDescription>
-        <br />
-        <MyDescription
-          href="#"
-          onClick={event => {
-            event.preventDefault();
-            this.props.NavMenu("anthem");
-          }}
-        >
-          My Anthem
-        </MyDescription>
-        <br />
-        <MyDescription
-          href="#"
-          onClick={event => {
-            this.props.NavMenu("you-should-watch");
-          }}
-        >
-          You should watch...
-        </MyDescription>
-      </div>
+          <MyDescription
+            className="enlaces"
+            href=""
+            onClick={event => {
+              event.preventDefault();
+              this.props.NavMenu("about-me");
+            }}
+          >
+            About Me
+          </MyDescription>
+          <br />
+          <MyDescription
+            className="enlaces"
+            href=""
+            onClick={event => {
+              event.preventDefault();
+              this.props.NavMenu("more-about-me");
+            }}
+          >
+            More About Me
+          </MyDescription>
+          <br />
+          <MyDescription
+            className="enlaces"
+            href="#"
+            onClick={event => {
+              event.preventDefault();
+              this.props.NavMenu("focuses");
+            }}
+          >
+            I'm focused on..
+          </MyDescription>
+          <br />
+          <MyDescription
+            className="enlaces"
+            href="#"
+            onClick={event => {
+              event.preventDefault();
+              this.props.NavMenu("anthem");
+            }}
+          >
+            My Anthem
+          </MyDescription>
+          <br />
+          <MyDescription
+            className="enlaces"
+            href="#"
+            onClick={event => {
+              this.props.NavMenu("you-should-watch");
+            }}
+          >
+            You should watch...
+          </MyDescription>
+        </div>
+      </nav>
     );
   }
 }
@@ -148,7 +161,7 @@ class MenuAboutMe extends Component {
 class AboutMe extends Component {
   render() {
     return (
-      <Description>
+      <Description className="col-sm-8">
         <div>
           <H2About>About me</H2About>
           <Descriptions>
